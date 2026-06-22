@@ -78,21 +78,41 @@ int main() {
     // }
 
                    //hollow rectangle
-    int n=4;
-    for(int i=1;i<=n;i++){
-       cout<<"*";
-        for(int j=1;j<=n-1;j++){
+    // int n=4;
+    // for(int i=1;i<=n;i++){
+    //    cout<<"*";
+    //     for(int j=1;j<=n-1;j++){
         
-        if(i==1||i==4){
-            cout <<"*";
-        }
-        else{
-            cout <<" ";
-        }}
-        cout<<"*";
-        cout<< endl;
-    }
+    //     if(i==1||i==4){
+    //         cout <<"*";
+    //     }
+    //     else{
+    //         cout <<" ";
+    //     }}
+    //     cout<<"*";
+    //     cout<< endl;
+    // }
+  #include <vector>
 
+class Solution {
+public:
+    int removeDuplicates(std::vector<int>& nums) {
+        // An empty array or single-element array has no duplicates
+        if (nums.empty()) return 0;
+        
+        int insertIndex = 1; // Pointer for the next unique element position
+        
+        for (int i = 1; i < nums.size(); ++i) {
+            // If we find a new unique element
+            if (nums[i] != nums[i - 1]) {
+                nums[insertIndex] = nums[i]; // Move it to the unique position
+                insertIndex++;               // Increment the unique count
+            }
+        }
+        
+        return insertIndex; // Return the count of unique elements
+    }
+};
 
     return 0;
 }
